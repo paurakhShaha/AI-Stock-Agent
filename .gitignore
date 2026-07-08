@@ -1,0 +1,68 @@
+# ==========================
+# Python
+# ==========================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+*.so
+.Python
+
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+
+# ==========================
+# Environment Variables
+# ==========================
+
+.env
+.env.*
+!.env.example
+
+
+# ==========================
+# IDE / Editors
+# ==========================
+
+.vscode/
+.idea/
+
+*.swp
+*.swo
+
+
+
+
+# ==========================
+# Logs
+# ==========================
+
+*.log
+logs/
+
+
+# ==========================
+# Generated Reports
+# ==========================
+
+reports/generated/
+weekly_report_*.json
+*_report.json
+
+compressed_news.json
+news.json
+
+# ==========================
+# Temporary Files
+# ==========================
+
+tmp/
+temp/
+*.tmp
+
+
