@@ -1,9 +1,11 @@
 {
-    "stocks":[
-        "NVDA",
-        "AAPL",
-        "MSFT",
-        "GOOGL",
-        "AMZN"
-    ]
+  "stocks": [
+    "NVDA",
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "META",
+    "TSLA"
+  ]
 }

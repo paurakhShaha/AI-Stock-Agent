@@ -1,31 +1,37 @@
-from agents.batch_agent import BatchAnalysisAgent
+import json
+from datetime import datetime
 
-from reports.weekly_report import create_weekly_report
-
+from orchestrator.orchestrator import StockAnalysisOrchestrator
+from agents.report_agent import ReportGeneratorAgent
 from tools.email_sender import send_email
 
 
+def run_daily():
 
-def run_weekly():
+    with open("config/stocks.json", "r") as f:
+        stocks = json.load(f)["stocks"]
 
+    # Monday=0 ... Sunday=6
+    day = datetime.today().weekday()
 
-    agent=BatchAnalysisAgent()
+    if day >= len(stocks):
+        print("No stock assigned for today.")
+        return
 
+    ticker = stocks[day]
 
-    results=agent.run()
+    print(f"Today's stock: {ticker}")
 
+    orchestrator = StockAnalysisOrchestrator()
 
-    report=create_weekly_report(
-        results
+    result = orchestrator.analyze(ticker)
+
+    report = ReportGeneratorAgent().generate(
+        ticker,
+        result
     )
-
 
     send_email(
-        report
+        subject=f"Daily AI Stock Report - {ticker}",
+        body=report["report"]
     )
-
-
-
-if __name__=="__main__":
-
-    run_weekly()

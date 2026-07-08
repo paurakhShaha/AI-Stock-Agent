@@ -1,21 +1,19 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-from weekly_runner import run_weekly
+from weekly_runner import run_daily
 
 
 
 scheduler = BlockingScheduler()
 
 
-
 @scheduler.scheduled_job(
     "cron",
-    day_of_week="mon",
-    hour=8
+    hour=8,
+    minute=0
 )
-def weekly():
-
-    run_weekly()
+def daily_job():
+    run_daily()
 
 
 
