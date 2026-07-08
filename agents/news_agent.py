@@ -1,17 +1,19 @@
 from google import genai
 from google.genai import types
-from dotenv import dotenv_values
+
 import json
 
 from tools.news_api import get_stock_news
 
 
-config = dotenv_values(".env")
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 client = genai.Client(
-    api_key=config["GEMINI_API_KEY"]
+    api_key=os.getenv("GEMINI_API_KEY")
 )
-
 
 class NewsAgent:
 
